@@ -4,8 +4,9 @@
       Demo app for Aviata.kz
     </header>
     <section>
-      <div>Filter</div>
-      <div>List</div>
+      <list-filter></list-filter>
+      <list-header></list-header>
+      <list-item></list-item>
     </section>
     <footer>
       <div class="author">Author: Nikolay Pyatayev</div>
@@ -15,24 +16,22 @@
 </template>
 
 <script>
+import listFilter from './components/list-filter'
+import listHeader from './components/list-header'
+import listItem from './components/list-item'
 
 export default {
   name: 'app',
   components: {
+    listFilter,
+    listHeader,
+    listItem
   }
 }
 </script>
 
 <style lang="scss">
   @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=cyrillic');
-
-  // Global styles
-  // Palette
-  $light-blue: #DFF0FF;
-  $blue: #397FBF;
-  $dark-blue: #212C5B;
-  $orange: #FE9922;
-  $grey: #979797;
 
   html, body {
     font-family: 'Open Sans', sans-serif;
