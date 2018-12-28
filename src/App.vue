@@ -4,9 +4,18 @@
       Demo app for Aviata.kz
     </header>
     <section>
-      <list-filter></list-filter>
-      <list-header></list-header>
-      <list-item></list-item>
+      <template v-if="store.backList">
+        <list-filter></list-filter>
+        <list-header></list-header>
+        <list-item
+          v-for="(ticket, i) in store.frontList"
+          :key="i"
+          :flightDuration="ticket.flightDuration"
+          :ticket="ticket.flights[0]"
+        ></list-item>
+      </template>
+      <preloader v-else></preloader>
+      
     </section>
     <footer>
       <div class="author">Author: Nikolay Pyatayev</div>
@@ -16,6 +25,9 @@
 </template>
 
 <script>
+import store from './store'
+
+import preloader from './components/preloader'
 import listFilter from './components/list-filter'
 import listHeader from './components/list-header'
 import listItem from './components/list-item'
@@ -23,10 +35,31 @@ import listItem from './components/list-item'
 export default {
   name: 'app',
   components: {
+    preloader,
     listFilter,
     listHeader,
     listItem
-  }
+  },
+  data() {
+    return {
+      store: store
+    }
+  },
+  beforeMount() {
+    this.getData()
+  },
+  methods: {
+    getData () {
+      fetch(this.store.api)
+        .then((response) => {
+          return response.json()
+        }).then((json) => {
+          this.store.backList = json
+        }).catch((ex) => {
+          // TODO: parsing error
+        })
+    }
+  },
 }
 </script>
 

@@ -1,10 +1,11 @@
 <template>
-  <div>Item</div>
+  <div>{{flightDuration}}, {{ticket.airline.name}}</div>
 </template>
 
 <script>
 export default {
-  name: 'listItem'
+  name: 'listItem',
+  props: ['flightDuration', 'ticket']
 }
 </script>
 

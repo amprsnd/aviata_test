@@ -5,8 +5,19 @@
 </template>
 
 <script>
+import store from '../store'
+
 export default {
-  name: 'listFilter'
+  name: 'listFilter',
+  data() {
+    return {
+      store: store,
+      airlines: []
+    }
+  },
+  beforeMount() {
+    this.store.frontList = this.store.backList
+  }
 }
 </script>
 
