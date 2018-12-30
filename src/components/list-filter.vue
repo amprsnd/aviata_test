@@ -22,8 +22,4 @@ export default {
 </script>
 
 <style lang="scss">
-  .filter {
-    background: $blue;
-    color: $white;
-  }
 </style>

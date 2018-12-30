@@ -8,10 +8,9 @@
         <list-filter></list-filter>
         <list-header></list-header>
         <list-item
-          v-for="(ticket, i) in store.frontList"
+          v-for="(item, i) in store.frontList"
           :key="i"
-          :flightDuration="ticket.flightDuration"
-          :ticket="ticket.flights[0]"
+          :item="item"
         ></list-item>
       </template>
       <preloader v-else></preloader>
@@ -67,6 +66,10 @@ export default {
   @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=cyrillic');
 
   html, body {
+
+    width: 100%;
+    height: 100%;
+
     font-family: 'Open Sans', sans-serif;
     font-size: 12px;
 
@@ -76,11 +79,24 @@ export default {
 
   #app {
     max-width: 1000px;
+    min-height: 100%;
     margin: 0 auto;
 
-    header {}
-    section {}
-    footer {}
+    display: flex;
+    flex-direction: column;
+
+
+
+    header {
+      padding: 1rem 1.34rem;
+      font-size: 2rem;
+    }
+    section {
+      flex-grow: 1;
+    }
+    footer {
+      padding: 1rem 1.34rem;
+    }
 
   }
 
