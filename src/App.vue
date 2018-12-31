@@ -12,6 +12,7 @@
           :key="i"
           :item="item"
         ></list-item>
+        <div v-if="store.frontList && store.frontList.length === 0" class="nothing">Нет результатов...</div>
       </template>
       <preloader v-else></preloader>
       
@@ -77,6 +78,10 @@ export default {
     color: $dark-blue;
   }
 
+  body {
+    overflow-y: scroll;
+  }
+
   #app {
     max-width: 1000px;
     min-height: 100%;
@@ -85,7 +90,11 @@ export default {
     display: flex;
     flex-direction: column;
 
-
+    .nothing {
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 1.5rem;
+    }
 
     header {
       padding: 1rem 1.34rem;
